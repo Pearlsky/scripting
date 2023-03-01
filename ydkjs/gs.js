@@ -46,7 +46,7 @@ const range = (rangeStart, rangeEnd) => {
   const rangeArray = [];
   let i = rangeStart;
 
-  //   buggy conditionals
+  //   buggy conditional; why?
   if (rangeStart && rangeEnd >= 0) {
     while (i <= rangeEnd) {
       rangeArray.push(i);
@@ -54,7 +54,7 @@ const range = (rangeStart, rangeEnd) => {
     }
     return rangeArray;
 
-    // buggy conditionals
+    // buggy conditional; why? 
   } else if (rangeStart && !rangeEnd) {
     return function (omittedRangeEnd) {
       while (i <= omittedRangeEnd) {
@@ -70,6 +70,9 @@ const range = (rangeStart, rangeEnd) => {
 
 function range(start, end) {
   start = Number(start) || 0;
+
+//   
+
   if (end === undefined) {
     return function getEnd(end) {
       return getRange(start, end);
@@ -78,6 +81,7 @@ function range(start, end) {
     end = Number(end) || 0;
     return getRange(start, end);
   }
+
   function getRange(start, end) {
     var ret = [];
     for (let i = start; i <= end; i++) {
