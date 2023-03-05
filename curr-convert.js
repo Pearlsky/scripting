@@ -19,7 +19,7 @@ currencyTo
 
 rate.
 */
-let curencyrate;
+let currencyRate;
 let currencyFrom;
 let currencyTo;
 
@@ -30,7 +30,7 @@ function convert(amount, rate) {
 function getRate(currencyFrom, currencyTo) {
   (async () => {
     const response = await fetch(
-      `https://rest.coinapi.io/v1/exchangerate/${currencyFrom}/${currencyTo}`,
+      `https://rest.coinapi.io/v1/exchangerate/${currencyFrom || "BTC"}/${currencyTo || "USD"}`,
       {
         method: "GET",
         headers: { "X-CoinAPI-Key": "CFA97BA1-59A9-40E4-8FFD-C3542E4CE9AB" },
@@ -60,4 +60,4 @@ function convertedToCurrencyHandler(e) {
   currencyRate = getRate(currencyFrom, currencyTo);
 }
 
-getRate("EUR", "GBP");
+getRate();
